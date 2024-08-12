@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakout Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <audio id="brickSound" src="sound/brickSound.mp3"></audio>
+
+    <div class="game-setup">
+      <label for="player-name">Enter Your Name:</label>
+      <input type="text" id="player-name" placeholder="Your Name" autofocus />
+      <label for="difficulty">Select difficulty:</label>
+      <select id="difficulty">
+        <option value="Normal">Normal</option>
+        <option value="Hard">Hard</option>
+        <option value="Very Hard">Very Hard</option>
+      </select>
+      <button id="btn-donate">Start Game</button>
+    </div>
+
+    <div class="container">
+      <div id="score"></div>
+      <div class="grid"></div>
+      <button id="reset-btn">Reset</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

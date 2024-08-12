@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  font-family: "Bangers", system-ui;
+  background-image: radial-gradient(#173d49 85%, #36a6f1 90%, #0d1725 20%);
+  background-size: 50px 50px;
+}
+
+.game-setup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: transparent;
+  padding: 3rem;
+}
+
+label {
+  display: block;
+  padding: 2rem 3rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: "Bangers", system-ui;
+  letter-spacing: 0.2rem;
+  color: rgb(239, 231, 6);
+}
+
+#player-name {
+  padding: 10px 20px;
+  border: none;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Bangers", system-ui;
+  letter-spacing: 0.2rem;
+  border-radius: 1rem;
+  color: #050505;
+  background-color: #0d88d5;
+}
+
+.game-setup input,
+.game-setup select {
+  padding: 1rem;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: none;
+  font-family: "Bangers", system-ui;
+  background-color: #0d88d5;
+}
+
+option {
+  font-size: 2rem;
+  font-family: "Bangers", system-ui;
+  color: rgb(239, 231, 6);
+}
+
+#btn-donate {
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: hsla(194 100% 69% / 1);
+  --btn-bg-2: hsla(217 100% 56% / 1);
+  --btn-bg-color: hsla(360 100% 100% / 1);
+  --radii: 0.5em;
+  cursor: pointer;
+  padding: 1em 2em;
+  min-width: 120px;
+  min-height: 44px;
+  font-size: var(--size, 1rem);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: linear-gradient(
+    325deg,
+    var(--btn-bg-2) 0%,
+    var(--btn-bg-1) 55%,
+    var(--btn-bg-2) 90%
+  );
+  border: none;
+  border-radius: var(--radii);
+  color: var(--btn-bg-color);
+  box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5),
+    0px 5px 5px -1px rgba(58, 125, 233, 0.25),
+    inset 4px 4px 8px rgba(175, 230, 255, 0.5),
+    inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+}
+
+#btn-donate:hover {
+  background-position: right top;
+}
+
+#btn-donate:is(:focus, :focus-visible, :active) {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-donate {
+    transition: linear;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: none;
+}
+
+#score {
+  position: absolute;
+  font-size: 4rem;
+  top: 2rem;
+  margin: -1rem;
+  color: #fa9f03;
+}
+
+#reset-btn {
+  position: absolute;
+  bottom: -0.5rem;
+  --border-radius: 15px;
+  --border-width: 4px;
+  appearance: none;
+  padding: 1em 2em;
+  border: 0;
+  background-image: radial-gradient(#173d49 85%, #36a6f1 90%, #0d1725 20%);
+  background-size: 50px 50px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f89b05;
+  z-index: 2;
+  letter-spacing: 0.2rem;
+  font-family: "Bangers", system-ui;
+  text-align: center;
+  cursor: pointer;
+}
+
+#reset-btn::after {
+  --m-i: linear-gradient(#000, #000);
+  --m-o: content-box, padding-box;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--border-width);
+  border-radius: var(--border-radius);
+  background-image: conic-gradient(
+    #488cfb,
+    #29dbbc,
+    #ddf505,
+    #ff9f0e,
+    #e440bb,
+    #655adc,
+    #488cfb
+  );
+  -webkit-mask-image: var(--m-i), var(--m-i);
+  mask-image: var(--m-i), var(--m-i);
+  -webkit-mask-origin: var(--m-o);
+  mask-origin: var(--m-o);
+  -webkit-mask-clip: var(--m-o);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  filter: hue-rotate(0);
+  animation: rotate-hue linear 500ms infinite;
+  animation-play-state: paused;
+}
+
+#reset-btn:hover::after {
+  animation-play-state: running;
+}
+
+@keyframes rotate-hue {
+  to {
+    filter: hue-rotate(1turn);
+  }
+}
+
+#reset-btn,
+#reset-btn::after {
+  box-sizing: border-box;
+}
+
+#reset-btn:active {
+  --border-width: 5px;
+}
+
+.grid {
+  position: relative;
+  width: 900px;
+  height: 700px;
+  box-shadow: 0 2px 5px 5px #938181;
+  border-radius: 1rem;
+  background: radial-gradient(
+        circle farthest-side at 0% 50%,
+        #282828 23.5%,
+        rgba(255, 170, 0, 0) 0
+      )
+      21px 30px,
+    radial-gradient(
+        circle farthest-side at 0% 50%,
+        #2c3539 24%,
+        rgba(240, 166, 17, 0) 0
+      )
+      19px 30px,
+    linear-gradient(
+        #282828 14%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 85%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        150deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        30deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
+      #282828;
+  background-size: 40px 60px;
+}
+
+.block {
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  background-color: rgb(3, 176, 239);
+  border: 1px solid black;
+  color: darkorchid;
+}
+
+.user {
+  position: absolute;
+  width: 150px;
+  height: 20px;
+  border: 1px solid;
+  background: linear-gradient(to left, #f9b30e 0%, #f904ac 90%);
+  border-radius: 1rem;
+}
+
+.ball {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: #fa9f03;
+  border: 1px solid #262425;
+}
